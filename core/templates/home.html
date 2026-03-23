@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<section class="top-hero">
+    <div class="container text-center text-white">
+        <h1 class="hero-title">
+            PROJECT MANAGEMENT
+        </h1>
+    </div>
+</section>
+
+
+<div class="dashboard-wrapper container-fluid">
+    <div class="dashboard-box shadow-lg">
+        <div class="row g-0">
+
+         
+        <div class="col-md-3 sidebar p-4">
+         <div class="logo mb-4">
+            <h4 class="fw-bold text-primary">ProLogs</h4>
+             <small class="text-muted">Project Management Admin</small>
+                </div>
+
+             <ul class="nav flex-column sidebar-menu">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/home/">🏠 Dashboard</a>
+                  </li>
+                    
+                    
+             <li class="nav-item">
+            <a class="nav-link" href= "/calendar/" >📅 Calendar</a>
+                    </li>
+                    <li class="nav-item">
+                 <a class="nav-link" href="/report/">📊 Status</a>
+                    </li>
+                </ul>
+            </div>
+
+         
+            <div class="col-md-9 p-4 content-area">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="fw-bold">Dashboard</h4>   
+              <div class="profile fw-semibold">
+                        {% if user.is_authenticated %}
+                            {{ request.user.username }}
+                        {% else %}
+                            Guest
+                        {% endif %}
+                    </div>
+                </div>
+             <div class="row g-3 mb-4">
+
+             <div class="col-md-3">
+             <a href="/tasklist/" style="text-decoration:none;">
+                 <div class="stat-card yellow">
+                           
+                     <h6>TASKS</h6>
+                    <p>{{ total_tasks }} Total Tasks</p>
+                        </div>
+                    </div></a>
+
+              <div class="col-md-3">
+                <a href="/projectlist/" style="text-decoration:none;">
+                 <div class="stat-card green">
+                     <h6>PROJECT</h6>
+                     <p>{{ total_projects }} Projects</p>
+                     <p>{{ completed_tasks }} Completed</p>
+                     <p>{{ pending_tasks }} Pending</p>
+                     </div>
+                    </div></a>
+
+                    <div class="col-md-3">
+                        <a href="/clientlist/" style="text-decoration:none;">
+                        <div class="stat-card purple">
+                            <h6>CLIENT</h6>
+                             <p>{{ total_clients }} Clients</p>
+                        </div>
+                    </div></a>
+             
+                    <div class="col-md-3">
+                        <a href="/projectcreate/" style="text-decoration:none;">
+                        <div class="stat-card primary-card text-white">
+                            <h6>CREATE NEW</h6>
+                            <p>PROJECT</p>
+                        </div>
+                    </div>
+
+                </div></a>
+    
+                <div class="chart-box p-4">
+                  <h5 class="fw-semibold mb-3">Task Status Overview</h5>
+                 <canvas id="clientChart"></canvas>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+{% endblock %}

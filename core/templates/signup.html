@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up | Project Management</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+
+<div class="login-container">
+    <div class="login-box">
+
+        <div class="login-header">
+            <h2>Create Account</h2>
+            <p>Register to access the system</p>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+
+       
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="Enter username" required>
+            </div>
+
+          
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Enter email" required>
+            </div>
+
+         
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password1" placeholder="Enter password" required>
+            </div>
+
+     
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" name="password2" placeholder="Confirm password" required>
+            </div>
+
+      
+       {% if form.errors %}
+                <div class="error-msg">
+                    Please correct the errors below.
+                </div>
+                {{ form.errors }}
+            {% endif %}
+
+            <button type="submit" class="login-btn">
+                Sign Up
+            </button>
+            <p class="signup-text">
+                Already have an account?
+                <a href="/">Login</a>
+            </p>
+        </form>
+    </div>
+</div>
+</body>
+</html>

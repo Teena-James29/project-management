@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">📊 Project Status Overview</h2>
+
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card shadow text-center p-3">
+                <h5>Total Projects</h5>
+                <h2 class="fw-bold text-primary">{{ total_projects }}</h2>
+            </div>
+        </div>
+
+        
+        <div class="col-md-3">
+            <div class="card shadow text-center p-3">
+                <h5>Completed Projects</h5>
+                <h2 class="fw-bold text-success">{{ completed_projects }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow text-center p-3">
+                <h5>Pending Projects</h5>
+                <h2 class="fw-bold text-warning">{{ pending_projects }}</h2>
+            </div>
+        </div>
+
+      
+        <div class="col-md-3">
+            <div class="card shadow text-center p-3">
+                <h5>Total Tasks</h5>
+                <h2 class="fw-bold text-dark">{{ total_tasks }}</h2>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
